@@ -6,7 +6,7 @@ const postProductService = async (producto) => {//En el servicio recibo el produ
         //console.log(producto)
         validarProducto(producto)
         const idCreado = await insertarProducto(producto)//tomo el id del producto creado en el repositorio
-        return { status: 201, message: `PRODUCTO REGISTRADO CORRECTAMENTE CON ID: ${idCreado}`, idCreado: idCreado }
+        return { status: 200, message: `PRODUCTO REGISTRADO CORRECTAMENTE CON ID: ${idCreado}`, idCreado: idCreado }
     } catch (error) {
         if (error.status) {
             throw error
