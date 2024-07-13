@@ -1,10 +1,10 @@
 const { query } = require("../config/connection.sql")
 
-const insertarProducto = async ({ titulo, descripcion, stock, precio, codigo }) => {
+const insertarProducto = async ({ titulo, imagen, descripcion, stock, precio, codigo }) => {
 
     try {
-        const insertar = 'INSERT INTO productos (titulo,descripcion,stock,precio,codigo) VALUES (?,?,?,?,?)'
-        const valores = [titulo, descripcion, stock, precio, codigo]
+        const insertar = 'INSERT INTO productos (titulo,imagen,descripcion,stock,precio,codigo) VALUES (?,?,?,?,?,?)'
+        const valores = [titulo, imagen, descripcion, stock, precio, codigo]
         const resultadoInsertar = await query(insertar, valores)
         return resultadoInsertar.insertId//retorno el id del producto insertado.
     } catch (error) {
@@ -72,10 +72,10 @@ const seleccionarTodosLosProductos = async () => {
 }
 
 const modificarProductoPorId = async (pid, producto) => {
-    const { titulo, descripcion, stock, precio, codigo } = producto
+    const { titulo, imagen, descripcion, stock, precio, codigo } = producto
     try {
-        const modificar = 'UPDATE productos SET titulo = ?, descripcion = ?, stock = ?, precio = ?, codigo = ? WHERE id = ?'
-        const valores = [titulo, descripcion, stock, precio, codigo, pid]
+        const modificar = 'UPDATE productos SET titulo = ?, imagen = ?, descripcion = ?, stock = ?, precio = ?, codigo = ? WHERE id = ?'
+        const valores = [titulo, imagen, descripcion, stock, precio, codigo, pid]
         const resultadoModificar = await query(modificar, valores)
         if (resultadoModificar.affectedRows === 0) {
             throw { status: 404, message: 'PRODUCTO CON ID ' + pid + ' NO ENCONTRADO' }

@@ -1,4 +1,4 @@
-const PROPIEDADES_NECESARIAS = ['titulo', 'descripcion', 'stock', 'precio', 'codigo']//defino las propiedades que son necesarias.
+const PROPIEDADES_NECESARIAS = ['titulo', 'descripcion', 'stock', 'precio', 'codigo', 'imagen']//defino las propiedades que son necesarias.
 const VALIDACIONES_PROPIEDADES = {
     'precio': {
         validacion: (valor) => {
@@ -29,6 +29,12 @@ const VALIDACIONES_PROPIEDADES = {
             return (Boolean(valor) && valor.length > 3)
         },
         errorText: 'CÓDIGO ES OBLIGATORIO Y DEBE TENER MÍNIMO 3 CARACTERES.'
+    },
+    'imagen': {
+        validacion: (valor) => {
+            return (Boolean(valor) && isNaN(valor) && valor.length > 50 && typeof (valor) === 'string')
+        },
+        errorText: 'IMAGEN ES OBLIGATORIA, DEBE SER UN STRING Y DEBE TENER MÍNIMO 50 CARACTERES.'
     }
 }
 
