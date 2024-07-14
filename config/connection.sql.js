@@ -27,7 +27,7 @@ database.connect((error) => {
         console.error('Error de conexión:', error)
     }
     else {
-        console.log('Te has conectado exitosamente a la base de datos.')
+        console.log('Te has conectado exitosamente a la base de datos:', DB_NAME)
     }
 })
 module.exports = { database, query }//4. exportamos query y la importamos en el auth.repository.
